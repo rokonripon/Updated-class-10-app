@@ -1,0 +1,55 @@
+name: Build APK
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Cordova
+        run: npm install -g cordova
+
+      - name: Build Cordova Project
+        run: |
+          # ১. প্রজেক্ট তৈরি
+          cordova create my_build com.writer.sheshjosna "Shesh Josna"
+          
+          # ২. সব ফাইল কপি করা
+          cp -r *.html my_build/www/ || true
+          cp -r *.png my_build/www/ || true
+          cp -r *.jpg my_build/www/ || true
+          
+          # ৩. config.xml কপি করা
+          cp config.xml my_build/config.xml || true
+          
+          cd my_build
+          
+          # ৪.icon.png কে অ্যাপ আইকন হিসেবে সেট করা
+          mkdir -p res/icon
+          cp ../icon.png res/icon/icon.png || true
+          
+          # ৫. প্লাগইন যোগ করা
+          cordova plugin add cordova-plugin-inappbrowser
+          
+          # ৬. প্ল্যাটফর্ম যোগ ও বিল্ড
+          cordova platform add android
+          cordova build android --debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Class 9-10 Science Helper-App
+          path: my_build/platforms/android/app/build/outputs/apk/debug/app-debug.apk
