@@ -14,28 +14,22 @@
             --chem-color: #e67e22;
             --phys-color: #3498db;
             --math-color: #9b59b6;
-            --support-color: #f1c40f;
-            --history-color: #1abc9c;
+            --more-color: #f1c40f;
             --about-color: #e74c3c;
             --white: #ffffff;
         }
 
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            margin: 0;
-            background: var(--bg-color);
-            color: var(--white);
-            overflow-x: hidden;
-            padding-bottom: 30px;
+            margin: 0; background: var(--bg-color); color: var(--white);
+            overflow-x: hidden; padding-bottom: 30px;
         }
 
         /* সায়েন্টিস্ট অ্যানিমেশন */
         #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 10000; transition: 0.5s;
         }
 
@@ -47,84 +41,40 @@
         @keyframes scratch { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
         header {
-            padding: 40px 20px;
-            text-align: center;
+            padding: 40px 20px; text-align: center;
             background: linear-gradient(135deg, #1e293b, #334155);
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
         }
 
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 15px; padding: 20px; max-width: 600px; margin: 0 auto;
         }
 
         .main-btn {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px 15px;
-            border-radius: 24px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1); padding: 25px 15px;
+            border-radius: 24px; text-align: center; cursor: pointer;
+            transition: 0.3s;
         }
 
-        .main-btn:active { transform: scale(0.95); }
         .main-btn i { font-size: 35px; margin-bottom: 12px; display: block; }
-        .main-btn span { font-weight: 700; font-size: 16px; }
-
         .btn-bio { border-bottom: 5px solid var(--bio-color); }
-        .btn-bio i { color: var(--bio-color); }
         .btn-chem { border-bottom: 5px solid var(--chem-color); }
-        .btn-chem i { color: var(--chem-color); }
         .btn-phys { border-bottom: 5px solid var(--phys-color); }
-        .btn-phys i { color: var(--phys-color); }
         .btn-math { border-bottom: 5px solid var(--math-color); }
-        .btn-math i { color: var(--math-color); }
-        .btn-support { border-bottom: 5px solid var(--support-color); }
-        .btn-support i { color: var(--support-color); }
-        .btn-history { border-bottom: 5px solid var(--history-color); }
-        .btn-history i { color: var(--history-color); }
         .btn-update { border-bottom: 5px solid #607d8b; }
-        .btn-update i { color: #607d8b; }
+        .btn-more { border-bottom: 5px solid var(--more-color); }
         .btn-about { grid-column: span 2; border-bottom: 5px solid var(--about-color); }
-        .btn-about i { color: var(--about-color); }
 
         .sub-page {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-color);
-            z-index: 1000;
-            padding: 20px;
-            box-sizing: border-box;
-            animation: slideUp 0.4s ease-out;
-        }
-
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-        .back-nav {
-            font-size: 20px; margin-bottom: 30px; cursor: pointer;
-            display: flex; align-items: center; gap: 10px;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color); z-index: 1000; padding: 20px; box-sizing: border-box;
         }
 
         .option-card {
-            background: var(--card-bg);
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 5px solid var(--bio-color);
+            background: var(--card-bg); margin-bottom: 15px; padding: 20px;
+            border-radius: 15px; display: flex; justify-content: space-between; align-items: center;
         }
 
         .option-card a {
@@ -132,108 +82,94 @@
             background: var(--phys-color); padding: 10px 25px; border-radius: 50px;
         }
 
-        /* ফাইল ভিউয়ার ওভারলে */
         #file-viewer {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: white; z-index: 11000; flex-direction: column;
+        }
+        
+        #close-btn {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #e74c3c; color: white; border: none;
+            width: 50px; height: 50px; border-radius: 50%;
+            font-size: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer; z-index: 12000;
         }
     </style>
 </head>
 <body>
 
 <div id="splash-screen">
-    <div class="scientist-anim">
-        👨‍🔬<span class="hand-scratch">🖐️</span>
-    </div>
-    <h1 style="margin-top: 20px; letter-spacing: 2px;">SCIENCE PRO</h1>
+    <div class="scientist-anim">👨‍🔬<span class="hand-scratch">🖐️</span></div>
+    <h1 style="margin-top: 20px;">SCIENCE PRO</h1>
     <p id="splash-text">সায়েন্টিস্ট ভাবছে...</p>
 </div>
 
 <div id="main-app" style="display:none;">
     <header>
         <h2 style="margin:0">এসএসসি বিজ্ঞান প্রস্তুতি</h2>
-        <p id="sync-status" style="opacity: 0.7;">আপনার লক্ষ্য, আমাদের সহযোগিতা</p>
+        <p style="opacity: 0.7;">ডিজিটাল গাইড</p>
     </header>
 
     <div class="grid-container">
-        <div class="main-btn btn-bio" onclick="openSub('জীববিজ্ঞান', 'bio')"><i class="fas fa-leaf"></i><span>জীববিজ্ঞান</span></div>
-        <div class="main-btn btn-chem" onclick="openSub('রসায়ন', 'chem')"><i class="fas fa-flask"></i><span>রসায়ন</span></div>
-        <div class="main-btn btn-phys" onclick="openSub('পদার্থ বিজ্ঞান', 'phys')"><i class="fas fa-bolt"></i><span>পদার্থ বিজ্ঞান</span></div>
-        <div class="main-btn btn-math" onclick="openSub('উচ্চতর গণিত', 'math')"><i class="fas fa-square-root-variable"></i><span>উচ্চতর গণিত</span></div>
+        <div class="main-btn btn-bio" onclick="openSub('জীববিজ্ঞান', 'bio')"><i class="fas fa-leaf" style="color:var(--bio-color)"></i><span>জীববিজ্ঞান</span></div>
+        <div class="main-btn btn-chem" onclick="openSub('রসায়ন', 'chem')"><i class="fas fa-flask" style="color:var(--chem-color)"></i><span>রসায়ন</span></div>
+        <div class="main-btn btn-phys" onclick="openSub('পদার্থ বিজ্ঞান', 'phys')"><i class="fas fa-bolt" style="color:var(--phys-color)"></i><span>পদার্থ বিজ্ঞান</span></div>
+        <div class="main-btn btn-math" onclick="openSub('উচ্চতর গণিত', 'math')"><i class="fas fa-square-root-variable" style="color:var(--math-color)"></i><span>উচ্চতর গণিত</span></div>
         <div class="main-btn btn-update" onclick="forceUpdate()"><i class="fas fa-sync-alt"></i><span>আপডেট</span></div>
-        <div class="main-btn btn-history" onclick="openHistory()"><i class="fas fa-chart-line"></i><span>পরীক্ষার হিস্ট্রি</span></div>
-        <div class="main-btn btn-about" onclick="openAbout()">
-            <i class="fas fa-user-graduate"></i>
-            <span>শিক্ষক পরিচিতি</span>
-        </div>
+        <div class="main-btn btn-more" onclick="handleFileClick('more')"><i class="fas fa-th-large" style="color:var(--more-color)"></i><span>আরো দেখুন</span></div>
+        <div class="main-btn btn-about" onclick="openAbout()"><i class="fas fa-user-graduate" style="color:var(--about-color)"></i><span>শিক্ষক পরিচিতি</span></div>
     </div>
 </div>
 
 <div id="file-viewer">
-    <div style="background:#1e293b; color:white; padding:15px; display:flex; justify-content:space-between; align-items:center;">
-        <span id="viewer-title">বই</span>
-        <button onclick="closeViewer()" style="background:#e74c3c; border:none; color:white; padding:8px 15px; border-radius:5px;">বন্ধ করুন</button>
-    </div>
-    <iframe id="viewer-frame" style="flex:1; border:none;"></iframe>
+    <button id="close-btn" onclick="closeViewer()"><i class="fas fa-times"></i></button>
+    <iframe id="viewer-frame" style="width:100%; height:100%; border:none;"></iframe>
 </div>
 
 <div id="sub-page" class="sub-page">
-    <div class="back-nav" onclick="closeSub()"><i class="fas fa-arrow-left"></i> <span id="sub-title">অধ্যায়</span></div>
-    <div class="option-card" style="border-left-color: #e74c3c;">
-        <div><h4>অধ্যায়ভিত্তিক কুইজ</h4><p style="font-size: 12px; opacity: 0.6;">মেধা যাচাই</p></div>
+    <div onclick="closeSub()" style="cursor:pointer; margin-bottom:20px;"><i class="fas fa-arrow-left"></i> ফিরে যান</div>
+    <h3 id="sub-title">অধ্যায়</h3>
+    <div class="option-card" style="border-left: 5px solid #e74c3c;">
+        <div><h4>অধ্যায়ভিত্তিক কুইজ</h4></div>
         <a href="javascript:void(0)" onclick="handleFileClick('quiz')">শুরু করি</a>
     </div>
-    <div class="option-card" style="border-left-color: #3498db;">
-        <div><h4>অধ্যায়ভিত্তিক নোট</h4><p style="font-size: 12px; opacity: 0.6;">মূল বিষয়গুলো</p></div>
+    <div class="option-card" style="border-left: 5px solid #3498db;">
+        <div><h4>অধ্যায়ভিত্তিক নোট</h4></div>
         <a href="javascript:void(0)" onclick="handleFileClick('note')">পড়ি</a>
     </div>
 </div>
 
-<div id="history-page" class="sub-page">
-    <div class="back-nav" onclick="closeSub()"><i class="fas fa-arrow-left"></i> <span>আপনার ফলাফল</span></div>
-    <div id="history-list"></div>
-</div>
-
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyj4uKE_78hNR-ZGixB7_MJ5N5alAnOWvtkYz3WTYulHT3bmC-qI0_Vn5nObrPPP9o/exec"; 
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMMDzMy9n_j--_edcIBw-ikRcYDVLvWYUYhNQ8strQUknPSyBxzJp0y-RvVt-hTRJoBA/exec"; 
     let db;
     let currentQuizFile = "", currentNoteFile = "";
 
     const request = indexedDB.open("ScienceProDB", 1);
     request.onupgradeneeded = e => e.target.result.createObjectStore("files", { keyPath: "name" });
-    request.onsuccess = e => { 
-        db = e.target.result; 
-        checkAndSync();
-    };
+    request.onsuccess = e => { db = e.target.result; checkAndSync(); };
 
     async function checkAndSync(force = false) {
         const isSynced = localStorage.getItem('isSynced');
-        if (isSynced && !force) {
-            hideSplash();
-            return;
-        }
+        if (isSynced && !force) { hideSplash(); return; }
 
         document.getElementById('splash-text').innerText = "ফাইল সিঙ্ক হচ্ছে...";
         try {
             const res = await fetch(SCRIPT_URL);
             const driveFiles = await res.json();
-            // এখানে ami.html যোগ করা হয়েছে
-            const targetNames = ['bioq.html', 'bion.html', 'chmq.html', 'chmn.html', 'phq.html', 'phyn.html', 'hmq.html', 'hmn.html', 'ami.html'];
+            const targets = ['bioq.html', 'bion.html', 'chmq.html', 'chmn.html', 'phq.html', 'phyn.html', 'hmq.html', 'hmn.html', 'ami.html', 'more.html'];
             
-            for (let name of targetNames) {
+            for (let name of targets) {
                 const file = driveFiles.find(f => f.name === name);
                 if (file) {
-                    const fileRes = await fetch(`${SCRIPT_URL}?fileId=${file.id}`);
-                    const base64 = await fileRes.text();
+                    const fRes = await fetch(`${SCRIPT_URL}?fileId=${file.id}`);
+                    const b64 = await fRes.text();
                     const tx = db.transaction("files", "readwrite");
-                    tx.objectStore("files").put({ name, data: base64 });
+                    tx.objectStore("files").put({ name, data: b64 });
                 }
             }
             localStorage.setItem('isSynced', 'true');
             if(force) alert("সব ফাইল আপডেট হয়েছে!");
-        } catch (e) {
-            console.log("Sync Error:", e);
-        }
+        } catch (e) { console.log("Sync Error"); }
         hideSplash();
     }
 
@@ -246,7 +182,7 @@
     }
 
     function forceUpdate() {
-        if(confirm("আপনি কি সব ফাইল নতুন করে আপডেট করতে চান?")) {
+        if(confirm("নতুন ফাইল আপডেট করবেন? (ইন্টারনেট প্রয়োজন)")) {
             document.getElementById('splash-screen').style.display = 'flex';
             document.getElementById('splash-screen').style.opacity = '1';
             checkAndSync(true);
@@ -262,56 +198,36 @@
         document.getElementById('sub-page').style.display = 'block';
     }
 
-    function openAbout() {
-        handleFileClick('about');
-    }
+    function openAbout() { handleFileClick('about'); }
 
     async function handleFileClick(mode) {
         let fileName;
         if (mode === 'quiz') fileName = currentQuizFile;
         else if (mode === 'note') fileName = currentNoteFile;
         else if (mode === 'about') fileName = 'ami.html';
+        else if (mode === 'more') fileName = 'more.html';
 
         const tx = db.transaction("files", "readonly");
-        const store = tx.objectStore("files");
-        const request = store.get(fileName);
+        const req = tx.objectStore("files").get(fileName);
 
-        request.onsuccess = () => {
-            if (request.result) {
-                const decoded = decodeURIComponent(escape(atob(request.result.data)));
+        req.onsuccess = () => {
+            if (req.result) {
+                const decoded = decodeURIComponent(escape(atob(req.result.data)));
                 const blob = new Blob([decoded], { type: 'text/html' });
-                const url = URL.createObjectURL(blob);
-                document.getElementById('viewer-title').innerText = (mode === 'about') ? "শিক্ষক পরিচিতি" : fileName;
-                document.getElementById('viewer-frame').src = url;
+                document.getElementById('viewer-frame').src = URL.createObjectURL(blob);
                 document.getElementById('file-viewer').style.display = 'flex';
-            } else {
-                alert("ফাইলটি ফোনে নেই। আপডেট বাটনে ক্লিক করে ডাউনলোড করে নিন।");
+            } else { 
+                alert("ফাইলটি ফোনে নেই। আপডেট বাটনে ক্লিক করুন।"); 
             }
         };
     }
 
-    function closeViewer() {
-        document.getElementById('file-viewer').style.display = 'none';
-        document.getElementById('viewer-frame').src = "";
+    function closeViewer() { 
+        document.getElementById('file-viewer').style.display = 'none'; 
+        document.getElementById('viewer-frame').src = ""; 
     }
-
-    function closeSub() { document.querySelectorAll('.sub-page').forEach(p => p.style.display = 'none'); }
-
-    function openHistory() {
-        const history = JSON.parse(localStorage.getItem('quizHistory')) || [];
-        const list = document.getElementById('history-list');
-        document.getElementById('history-page').style.display = 'block';
-        if(history.length === 0) {
-            list.innerHTML = "<p style='text-align:center; opacity:0.5; margin-top:50px;'>কোনো হিস্ট্রি পাওয়া যায়নি!</p>";
-        } else {
-            list.innerHTML = history.reverse().map(h => `
-                <div class="history-card">
-                    <div style="display:flex; justify-content:space-between;"><b>${h.subject}</b><span style="color:var(--bio-color)">${h.score}</span></div>
-                    <small style="opacity:0.6">${h.date}</small>
-                </div>
-            `).join('');
-        }
-    }
+    
+    function closeSub() { document.getElementById('sub-page').style.display = 'none'; }
 </script>
 </body>
 </html>
